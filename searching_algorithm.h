@@ -5,7 +5,8 @@ class Searching{
 
 public:
 
-    int* arr, n, i, mid, key_index=-1, search_key=-1;
+    int* arr
+    int n, i, mid, key_index=-1, search_key=-1;
     int total_iteration = 1;
     string algo_name = "",time_complexity = "", space_complexity = "";
     double time_taken = 0.0;
