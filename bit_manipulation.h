@@ -1,0 +1,188 @@
+#include "../cp_contest/my_macros.h"
+
+
+// Total bits required to represent a num :
+
+int totalBitReq(int num){
+    //num req i bit if 2^(i-1) ≤ num ≤ 2^i – 1
+    if(num==0)  return 0;
+    int i = (int)log2(num)+1;
+    return i;
+}
+
+
+// Checking iTh bit is set of unset :
+
+bool checkIthBit(int num,int i)
+{
+    bool bit = num & (1<<i);
+    return bit;
+}
+
+// Set iTh bit of num :
+
+int setIthBit(int num,int i)
+{
+    return num |= (1 << i);
+}
+
+
+// Unset iTh bit of num :
+
+int unsetIthBit(int num,int i)
+{
+    return num &= (~(1 << i));
+}
+
+
+// Toggling a bit at i th position :
+
+int toggleIthBit(int num,int i)
+{
+    return num ^= (1 << i);
+}
+
+
+// Count set bit
+
+int countSetBits(int num)
+{
+    int cnt_set_bit = 0;
+    while(num){
+        num &= (num-1);
+        cnt_set_bit++;
+    }
+    return cnt_set_bit;
+}
+
+
+// Calculate log2 of num in log(n)
+
+int log2(int num)
+{
+    int res = 0;
+    while(num >>= 1)
+        res++;
+    return res;
+}
+
+
+// Check if num is power of 2
+bool isPowerOf2(int num)
+{
+    if(num==0)  return false;
+    else
+        if((num & num-1) == 0)
+            return true;
+    return false;
+    /*------------
+    sort : return (num && !(num & num-1));
+    -------------*/
+}
+
+
+// 1’s complement of num :
+
+int onesComp(int num)
+{
+    int i = totalBitReq(num);
+    int j=0;
+    while(j<i){
+        num = toggleIthBit(num,j);
+        j++;
+    }
+    return num;
+    /*--------------------------------
+    this is wrong
+    return (~num);
+    0000 0000  0000 0000  0000 0000  0000 1010
+    When we negate it, we get
+    1111 1111  1111 1111  1111 1111  1111 0101
+    --------------------------------*/
+}
+
+
+// 2's complement of num :
+
+int twosComp(int num)
+{
+    return onesComp(num)+1;
+}
+
+
+// Rightmost iTh set bit or lowest set bit of a num :
+// or index of first least significant set bit
+int lowestSetBit(int num)
+{
+    //1 base indexing
+    int i = log2(num & -num) + 1;
+    return i;
+    /*
+    return ffs(num); // ffs(n) inbuild function
+    or
+    int i = 1;
+    int m = 1;
+
+    while (!(n & m)) {
+
+        // left shift
+        m = m << 1;
+        i++;
+    }
+    return i;
+    */
+}
+
+
+// Leftmost iTh set Bit or highest set bit of num :
+
+int highestSetBit(int num)
+{
+    int i=0;
+    while(num){
+        num>>=1;
+        i++;
+    }
+    return i;
+}
+
+
+// Binary representation of num :
+
+string numToBin(int num){
+    if(num<0)   return "negative no";
+    int i = totalBitReq(num);
+    string bin = "";
+    while(i){
+        if(checkIthBit(num,i-1))
+            bin+='1';
+        else
+            bin+='0';
+        i--;
+    }
+    return bin;
+    /*-----------------------
+    string bin = std::bitset<8> (num).to_string();
+    -----------------------*/
+
+    /*-----------------------
+    int binaryNum[32];
+    int i = 0;
+    while (n > 0) {
+        binaryNum[i] = n % 2;
+        n = n / 2;
+        i++;
+    }
+    for (int j = i - 1; j >= 0; j--)
+        cout << binaryNum[j];
+    -------------------------*/
+}
+
+
+// Decimal representation of binary or bits
+
+unsigned int binToNum(string bin){
+    unsigned int num = bitset<32>(bin).to_ulong();
+    return num;
+}
+
