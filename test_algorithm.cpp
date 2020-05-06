@@ -1,4 +1,5 @@
-#include "bit_manipulation.h"
+//#include "bit_manipulation.h"
+#include "array_manipulation.h"
 
 int main()
 {
@@ -7,8 +8,12 @@ int main()
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
 
-    DBx(binToNum("10000"))
-    DBx(onesComp(7))
-    DBx(onesComp(1))
+    int arr[]={1,4,4};
+    //int arr[] = {2,3,1,2,4,3};
+    int n = sizeof(arr)/sizeof(arr[0]);
+    ArrayAlgo ob(arr,n);
+
+    DBx(ob.minSizeSubarraySum(3))
+
     return 0;
 }

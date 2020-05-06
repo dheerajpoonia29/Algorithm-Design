@@ -56,6 +56,26 @@ int countSetBits(int num)
 }
 
 
+// Storing set bit pos, right to left based indexing :
+vector<int> storingSetBits(int num){
+    int i=0;
+    while(num){
+        if(num & (1))
+            set_bit_pos.pb(i);
+        i++;
+        num>>=1;
+    }
+}
+
+
+// Converting bool vector to int :
+int boolVectorToInt(vector<bool> bin) {
+    // need of bool vector is because bitset<len> where len is no dynamically allocated so we need vector to store binary bit
+    int num;
+    num = accumulate(b.rbegin(), b.rend(), 0, [](int x, int y) { return (x << 1) + y; });
+    return num;
+}
+
 // Calculate log2 of num in log(n)
 
 int log2(int num)
@@ -181,8 +201,23 @@ string numToBin(int num){
 
 // Decimal representation of binary or bits
 
-unsigned int binToNum(string bin){
-    unsigned int num = bitset<32>(bin).to_ulong();
+unsigned long int binToNum(string bin){
+    unsigned long int num = bitset<32>(bin).to_ulong();
     return num;
+    /*-----------------------
+    int base = 1;
+
+    int temp = num;
+    while (temp) {
+        int last_digit = temp % 10;
+        temp = temp / 10;
+
+        dec_value += last_digit * base;
+
+        base = base * 2;
+    }
+
+    return dec_value;
+    -------------------------*/
 }
 
