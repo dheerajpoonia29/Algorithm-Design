@@ -5,7 +5,7 @@ using namespace std;
 
 //------------------------- syntax shortening ----------------------
 #define ll                  long long int
-#define nl                  cout<<"\n"
+#define el                  cout<<"\n"
 #define np                  nullptr
 #define fastio              ios_base::sync_with_stdio(0); cin.tie(0); cout.tie(0);
 

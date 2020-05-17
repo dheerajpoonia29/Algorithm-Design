@@ -8,7 +8,8 @@ int main()
     px(checkPrime(21));
     px(checkPrime(7));
 
-    pvec(findPrime(10));
+    pvec(findPrime(20));
+		pvec(findFactor(12));
 
     return 0;
 }
