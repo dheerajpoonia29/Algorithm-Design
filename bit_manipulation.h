@@ -43,6 +43,55 @@ int toggleIthBit(int num,int i)
 }
 
 
+// Adding two number :
+int addUsingBit(int a, int b){
+    vector<bool> ans;
+    int bit=1, carry=0, currBit=0;
+    while(a || b){
+        if(a&bit && b&bit){
+            //if both bit are set then carry is generated
+            if(carry){
+                currBit=1;
+                carry=1;
+            }
+            else{
+                currBit=0;
+                carry=1;
+            }
+        }
+        else if(a&bit || b&bit){
+            //if one of the bit is 1
+            if(carry){
+                currBit=0;
+                carry=1;
+            }
+            else{
+                currBit=1;
+                carry=0;
+            }
+        }
+        else{
+            //if both bit are 0
+            if(carry){
+                currBit=1;
+                carry=0;
+            }
+            else{
+                currBit=0;
+            }
+        }
+        ans.pb(currBit);
+        a>>=1;
+        b>>=1;
+    }
+    if(carry){
+        ans.pb(carry);
+    }
+    int no = boolVectorToInt(ans);
+    return no;
+}
+
+
 // Count set bit
 
 int countSetBits(int num)
@@ -69,8 +118,9 @@ vector<int> storingSetBits(int num){
 
 
 // Converting bool vector to int :
-int boolVectorToInt(vector<bool> bin) {
+int boolVectorToInt(vector<bool> b) {
     // need of bool vector is because bitset<len> where len is no dynamically allocated so we need vector to store binary bit
+    // note 4-> vec[0,0,1] not [1,0,0] this will work for [0,0,1] don't reverse bool vector for converion
     int num;
     num = accumulate(b.rbegin(), b.rend(), 0, [](int x, int y) { return (x << 1) + y; });
     return num;
