@@ -1,4 +1,3 @@
-#include "..\cp_contest\my_macros.h"
 #include "..\data_structure\heap.h"
 
 class ArrayAlgo{

@@ -1,2 +1,2 @@
-language = "cpp"
+zlanguage = "cpp"
 run = "g++ test.cpp -o test && ./test"

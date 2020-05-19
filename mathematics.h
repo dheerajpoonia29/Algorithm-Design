@@ -1,4 +1,5 @@
 // CHECK GIVEN NO IS PRIME OR NOT
+
 bool checkPrime(int n){
 	/*
 	n(7) : 1
@@ -25,6 +26,7 @@ bool checkPrime(int n){
 
 
 // NEXT PRIME NUMBER FROM GIVEN NUMBER
+
 int nextPrime(int n){
 	while(!checkPrime(++n));
 	return n;
@@ -32,6 +34,7 @@ int nextPrime(int n){
 
 
 // FIND ALL PRIME NUMBER UPTO N
+
 vector<int> findPrime(int n){
 	/*
 	n(20) : 2,3,5,7,11,13,17,19
@@ -97,6 +100,7 @@ vector<int> findPrime(int n){
 
 
 // FIND FACTOR OF NUMBER N 
+
 vector<int> findFactor(int n){
 	/*
 	Factor of a number 'n' is a number a such that a divides n.
@@ -155,6 +159,7 @@ vector<int> findFactor(int n){
 
 
 // FIND FACTOR OF NUMBER N 
+
 vector<pair<int,int>> findPrimeFactor(int n){
 	/*
 	n(12) :  2, 2, 3
@@ -203,8 +208,8 @@ vector<pair<int,int>> findPrimeFactor(int n){
 }
 
 
-
 //	FIND LCM (LONGEST COMMON MULTIPLE)
+
 int findLcm(int a, int b){
 	/*
 	a(3) :	3	6	9	12	->15 
@@ -225,8 +230,8 @@ int findLcm(int a, int b){
 }
 
 
-
 //	FIND GCD (GREATEST COMMON DIVISOR)
+
 int findGcd(int a, int b){
 	/*
 	a(3) : ->1
@@ -259,6 +264,7 @@ int findGcd(int a, int b){
 
 
 // FIND FAST MOD EXPONENTIATION
+
 ll findFastExp(int base, int exp, int mod){
 	/*
 	m1. O(exp)   (note: it will raise tle for large value of exp)
@@ -291,10 +297,10 @@ ll findFastExp(int base, int exp, int mod){
 	}
 	return res;
 }
-}
 
 
 //USING STANDARD LIBRARY
+
 ll gcd(ll x, ll y) {
   return y ? gcd(y, x % y) : x;
 }

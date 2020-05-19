@@ -1,5 +1,5 @@
-#include "../cp_contest/my_macros.h"
-
+#include "macro.h"
+int boolVectorToInt(vector<bool> b);
 
 // Total bits required to represent a num :
 
@@ -107,13 +107,15 @@ int countSetBits(int num)
 
 // Storing set bit pos, right to left based indexing :
 vector<int> storingSetBits(int num){
+	vector<int> pos;
     int i=0;
     while(num){
         if(num & (1))
-            set_bit_pos.pb(i);
+            pos.pb(i);
         i++;
         num>>=1;
     }
+	return pos;
 }
 
 
@@ -217,6 +219,8 @@ int highestSetBit(int num)
 }
 
 
+// 
+
 // Binary representation of num :
 
 string numToBin(int num){
@@ -271,3 +275,23 @@ unsigned long int binToNum(string bin){
     -------------------------*/
 }
 
+
+// CALCULATING HAMMING DISTANCE
+
+int hammingDistance(int a,int b){
+	int dist=0;
+
+	while(a || b){
+		if(a&(1) ^ b&(1)){
+			dist++;
+		}
+		a>>=1;
+		b>>=1;
+		//pxy(a,b)
+	}
+	/*
+	different bits = a^b xor 
+	now cound 1 in different bits
+	*/
+	return dist;
+}
