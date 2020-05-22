@@ -128,6 +128,7 @@ int boolVectorToInt(vector<bool> b) {
     return num;
 }
 
+
 // Calculate log2 of num in log(n)
 
 int log2(int num)
@@ -218,8 +219,6 @@ int highestSetBit(int num)
     return i;
 }
 
-
-// 
 
 // Binary representation of num :
 

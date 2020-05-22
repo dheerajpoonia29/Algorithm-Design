@@ -41,7 +41,7 @@ using namespace std;
 #define pm(mat,r,c)      		cout<< #mat << "=" << endl;  for(int i=0; i<r; i++){ for(int j=0; j<c;j++)   cout<<mat[i][j]<<" ";   cout<< endl; } cout<<endl;
 
 #define pv(vec)          		cout<< #vec << "=" ; for(auto ele: vec)  cout<< ele <<" ";  cout<< endl;
-#define pvp(vec)						cout<< #vec << "=" ; for(auto v: vec)	cout<< v.first <<":"<< v.second << " ; ";	 cout<< endl;
+#define pvp(vec)						cout<< #vec << "=\n" ; for(auto v: vec)	cout<< v.first <<":"<< v.second << endl;	 cout<< endl;
 #define phsmp(map)       		cout<< #map << "=" ;  for(auto pair: map) cout<< pair.first<< " " << pair.second << "\n";  cout<< endl;
 
 #define psep1()            cout<<"\n_________________________"<<" \n";
@@ -51,9 +51,11 @@ using namespace std;
 #define max(a,b)            ((a)>(b)?(a):(b))
 #define MIN(a,b)            ((a)<(b)?(a):(b))
 #define ABS(a)              ((a)>(0)?(a):-(a))
-#define mod10p7                 1000000007
+#define mod                 1000000007
 #define prec(x,y)           fixed<<setprecision(y)<<x;
 //prec(ans,6)
+
+
 
 //----------------------- boolean macro -------------------------
 #define                     isKeyExist(hashtbl, key) (hashtbl.find(key)!=hashtbl.end())

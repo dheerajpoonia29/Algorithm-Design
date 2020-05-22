@@ -1,3 +1,6 @@
+#include "macro.h"
+
+
 // CHECK GIVEN NO IS PRIME OR NOT
 
 bool checkPrime(int n){
@@ -42,60 +45,37 @@ vector<int> findPrime(int n){
 	m1. O(n*n)
 	m2. O(n*n/2)  === m1
 	m3. O(n*sqrt(n))
-	m4. O(n(log(logn))	SIEVE OF ERATOSTHEnES   (doubt: why not O(nlogn) )
-	m5. O(n) 						OPTIMIZE SIEVE OF ERATOSTHEnES
+	m4. O(n(log(logn))	SIEVE OF ERATOSTHEnES   (doubt: why not O(nlogn) )     below implementation
+	m5. O(n) 		(not understand till)				OPTIMIZE SIEVE OF ERATOSTHEnES
+	--------------------------------------------------
+	intially all are true -> prime
+	then mark 2 multiple not prime 
+	then mark 3 multiple not prime ..... so on 
+	--------------------------------------------------
+	complexity = n/2, n/3, n/5, n/7 ...
+	n/4 is not executed because at here is falsed by 2 
+	so t.c = n*(1/2, 1/3, 1/5, 1/7, ...)
+	       = n(log(n)) if it constant 1/2 but here we see it keep reducing by -1 
+				 = n(log(logn))
 	*/
 	vector<int> res;
-	if(n<2){
-		return res;
-	}
-	else{
-		vector<bool> prime(n,true);
-		prime[0]=false;
-		prime[1]=false;
-
-		// here instead of going n we go till sqrt(n) because while reaching n>sqrt(n) we find that all bool value of prime is get false
-		
-		for(int i=2; i<=sqrt(n); i++){			
-			if(prime[i]==true)
-				for(int multiple=i+i; multiple<=n; multiple+=i){
-					prime[multiple]=false;
-				}
-		}
-
-		for(int i=0; i<n; i++){
-			if(prime[i])
-				res.pb(i);
-		}
-		
-
-		// optimzation of above
-		//https://www.geeksforgeeks.org/sieve-eratosthenes-0n-time-complexity/
-		/* not understand : TODO
-		vector<int>SPF(1000001);
-
-    for (int i=2; i<n; i++) 
-    { 
-        if (prime[i]) 
-        { 
-            res.pb(i); 
-  
-            SPF[i] = i; 
-        } 
-  
-        
-        for (int j=0; j < (int)res.size() && 
-             i*res[j] < n && res[j] <= SPF[i]; j++) 
-        { 
-            res[i*res[j]]=false; 
-  
-            SPF[i*res[j]] = res[j] ; 
-        } 
-    } 
-		*/
-		return res;
-	}
 	
+	vector<bool> is_prime(n+1, true);
+	is_prime[0] = is_prime[1] = false;
+	for (int i = 2; i * i <= n; i++) {
+		// or instead or doing i*i we also do like i=2; i<=sqrt(n); i++ because when reach i>sqrt(n) we find that is_prime mark to all as false, because every left side has pair present on right side which is also factor
+		if (is_prime[i]) {
+				for (int j = i * i; j <= n; j += i)
+						is_prime[j] = false;
+		}
+	}
+
+	for(int i=0; i<n+1; i++){
+		if(is_prime[i]==true){
+			res.pb(i);
+		}
+	}
+	return res;
 }
 
 
@@ -166,46 +146,38 @@ vector<pair<int,int>> findPrimeFactor(int n){
 	n(17) :  17
 	-----------------------
 	m1. O(n)	
-	m2. O(sqrt(n))
+	m2. O(log(logn))
+	n/2, n/3, n/5, n/7 ....
 	*/
 	vector<pair<int,int>> res;    //prime factor, exponent
 	if(n<2){
 		return res;
 	}
 	else{
-		/*
-		int a=2;
-		int b = 0;
-		int rem;
-
-		while(b!=1){
-			b = n/a;
-			rem = n%a;
-			if(rem==0){
-				res.pb(a);
-				n=b;
-			}
-			else{
-				a = nextPrime(a);      //O(n)
-				b=0;
-			}
+		// 2 is only a even prime number 
+		int p=2, exp=0;
+		while(n%p==0){
+			n/=p;
+			exp++;			
 		}
-		*/
-		for(int i=2; i<=sqrt(n); i++){
-			if(n%i==0){
-				int exp=0;
-				while(n%i==0){
-					exp+=1;
-					n/=i;
-				}
-				res.pb(mp(i,exp));
+		if(exp!=0)
+		res.pb(mp(p,exp));
+
+		// rest all are prime are odd i+=2
+		for(p=3; p*p<=n; p+=2){	// either p<=sqrt(n)
+			exp=0;
+			while(n%p==0){
+				n/=p;
+				exp++;
 			}
+			if(exp!=0)
+			res.pb(mp(p,exp));
 		}
 		// special case
 		if(n!=1)	res.pb(mp(n,1));
 	}
 	return res;
-}
+}	
 
 
 //	FIND LCM (LONGEST COMMON MULTIPLE)
@@ -230,7 +202,7 @@ int findLcm(int a, int b){
 }
 
 
-//	FIND GCD (GREATEST COMMON DIVISOR)
+//	FIND GCD (GREATEST COMMON DIVISOR/FACTOR)
 
 int findGcd(int a, int b){
 	/*
@@ -242,6 +214,17 @@ int findGcd(int a, int b){
 
 	a(12)	:	1	2	3	->4	6	12
 	a(16)	: 1	2	->4	8	16	
+
+	a(0)	: 0%5=0 there 5 is the greatest divisor which divide both 0 & 5
+	a(5)	: ->5 15
+	* n with 0 => n 
+	* n with 1 => 1
+
+	Follows from the definitions of coprime and greatest common divisor as follows.
+
+    gcd{n,1}=1
+    gcd{n,0}=n
+
 	---------------------------------
 	m1. O(min(a,b))
 	*/
@@ -265,18 +248,18 @@ int findGcd(int a, int b){
 
 // FIND FAST MOD EXPONENTIATION
 
-ll findFastExp(int base, int exp, int mod){
+ll findFastExp(int base, int exp, int modulo){
 	/*
 	m1. O(exp)   (note: it will raise tle for large value of exp)
 	m2. O(log(exp)) 		(using bitmasking)
 	idea: 
 		3^5 = 3*3^4 = 3*3*3^3 and so on
-		  bin(5) =	1		0		1
-								3^4	3^2	3
-							
-								addition result where we have set bit and 
-								every time we goes toward left shift sqaure
-								the current exponent
+		bin(5) =	1		0		1
+							3^4	3^2	3
+						
+		addition result where we have set bit and 
+		every time we goes toward left shift sqaure
+		the current exponent
 
 	----------------------------------------------------------
 	int base = 3;
@@ -290,22 +273,49 @@ ll findFastExp(int base, int exp, int mod){
 	ll res = 1;
 	while(exp>0){
 			if(exp&1){
-					res = (res*base)%mod;
+					res = (res*base)%modulo;
 			}
-			base = (base*base)%mod;
+			base = (base*base)%modulo;
 			exp = exp>>1;
 	}
 	return res;
 }
 
 
-//USING STANDARD LIBRARY
+//USING STANDARD LIBRARY  #include <algorithm.h>
+// gcd = __gcd(a,b);
+// lcm = a*b/__gcd(a,b);
 
-ll gcd(ll x, ll y) {
+template<class T>
+T gcd(T x, T y) {
+	// EUCLINDEAN ALGORITHM
+	// https://codility.com/media/train/10-Gcd.pdf
   return y ? gcd(y, x % y) : x;
 }
 
-ll lcm(ll a, ll b)
+template<class T>
+T lcm(T a, T b)
 {
-   return a * b / gcd(a, b);
+   return a * b / __gcd(a, b);
+}
+
+
+// FIND FACTORIAL
+
+int findFactorial(int n){
+	if(n==1 || n==0){
+		return 1;
+	}
+	return n*findFactorial(n-1)%mod;
+} 
+
+
+// FIND SQUARE 
+
+vector<pair<int,int>> findSquare(int n){
+	vector<pair<int,int>> res;
+	for(int i=1; i<=n; i++){
+		res.pb(mp(i,i*i));
+	}
+	return res;
 }

@@ -1,3 +1,18 @@
+#include "macro.h"
+
+
+// CHAR BASE CONVERSION TO DECIMAL INTEGER
+
+int letterBaseToDecimal(string letter){
+
+	int n=-234;
+	string s = to_string(n);
+	reverse(s.begin(), s.end());
+	cout<<s;el;
+	return 0;
+	
+}
+/*
 long int BinToHex(string buf)
 {
 	long int longint=0;
@@ -124,3 +139,4 @@ vector<int> binToDec(vector<int> bin){
     }
 	return out;
 }
+*/
