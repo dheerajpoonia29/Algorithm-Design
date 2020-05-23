@@ -191,8 +191,35 @@ int lowestSetBit(int num)
     int i = log2(num & -num) + 1;
     return i;
     /*
+    int lsb(int pos){		  // O(logn)
+		int bit = 0;      
+	    while ((pos >> bit) & 1 == 0) {
+	        ++bit;
+	    }
+	    return (1 << bit);
+    }
+    ---------------------------------------------    
+    or 
+	
+	int lsb(int pos) {         // O(1)
+    	return pos & -pos;
+	}
+
+	x&(-x) gives the last set bit in a number x. 
+    Example: x = 10(in decimal) = 1010(in binary)
+	The last set bit is given by x&(-x) = (10)1(0) & (01)1(0) = 0010 = 2(in decimal)
+
+	x = 01101100
+	~x = 10010011
+	-x = 10010100
+	there for : x & -x = 00000100
+	---------------------------------------------
+	or
+
     return ffs(num); // ffs(n) inbuild function
+    ---------------------------------------------
     or
+
     int i = 1;
     int m = 1;
 
