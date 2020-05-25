@@ -319,3 +319,13 @@ vector<pair<int,int>> findSquare(int n){
 	}
 	return res;
 }
+
+
+// NTH TERM OF FIBONACCI SEQUENCE
+float findFibNTerm(float n){
+	/*
+	xn = (φ^n − (1−φ)^n) / √5
+	*/
+	float t = 1.618034;
+	return (pow(t,n)-pow((1-t),n))/sqrt(5);
+}
