@@ -331,7 +331,7 @@ float findFibNTerm(float n){
 }
 
 
-void intDigitToVector(int n, vector<int> &v){
+void intToVector(int n, vector<int> &v){
 	while(n){
 		v.push_back(n%10);
 		n/=10;
@@ -339,11 +339,14 @@ void intDigitToVector(int n, vector<int> &v){
 	reverse(v.begin(), v.end());
 }
 
-int vectorDigitToInt(vector<int> v){
-	int res=0;
-	int n = v.size();
-	for(auto e: v){
-		res+= pow(10,n)*e;
+int vectorToInt(vector<int> v){
+	reverse(v.begin(), v.end());
+	int decimal = 1;
+	int total = 0;
+	for (auto& it : v)
+	{
+			total += it * decimal;
+			decimal *= 10;
 	}
-	return res;
+	return total;
 }
