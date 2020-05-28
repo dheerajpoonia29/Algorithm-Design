@@ -329,3 +329,21 @@ float findFibNTerm(float n){
 	float t = 1.618034;
 	return (pow(t,n)-pow((1-t),n))/sqrt(5);
 }
+
+
+void intDigitToVector(int n, vector<int> &v){
+	while(n){
+		v.push_back(n%10);
+		n/=10;
+	}
+	reverse(v.begin(), v.end());
+}
+
+int vectorDigitToInt(vector<int> v){
+	int res=0;
+	int n = v.size();
+	for(auto e: v){
+		res+= pow(10,n)*e;
+	}
+	return res;
+}
