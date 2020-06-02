@@ -2,8 +2,7 @@
 //#include "array_manipulation.h"
 //#include "mathematics.h"
 //#include "base_conversion.h"
-//#include "permutation_combination.h"
-#include "macro.h"
+#include "permutation_combination.h"
 
 int do_it(int,int);
 
@@ -11,10 +10,9 @@ int main()
 {
 	hello world
 
-	int a,b;
-	si(a); si(b);
-	pi(do_it(a,b));
-
+	pv(findStringPermutation("abc"));
+	pv(findStringCombination("abc",10,3));
+	
 	return 0;
 }
 
