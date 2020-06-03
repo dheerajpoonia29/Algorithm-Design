@@ -1,8 +1,7 @@
-#include "macro.h"
+#include "../macro.h"
 
 
 // CHECK GIVEN NO IS PRIME OR NOT
-
 bool checkPrime(int n){
 	/*
 	n(7) : 1
@@ -29,7 +28,6 @@ bool checkPrime(int n){
 
 
 // NEXT PRIME NUMBER FROM GIVEN NUMBER
-
 int nextPrime(int n){
 	while(!checkPrime(++n));
 	return n;
@@ -37,7 +35,6 @@ int nextPrime(int n){
 
 
 // FIND ALL PRIME NUMBER UPTO N
-
 vector<int> findPrime(int n){
 	/*
 	n(20) : 2,3,5,7,11,13,17,19
@@ -80,7 +77,6 @@ vector<int> findPrime(int n){
 
 
 // FIND FACTOR OF NUMBER N 
-
 vector<int> findFactor(int n){
 	/*
 	Factor of a number 'n' is a number a such that a divides n.
@@ -139,7 +135,6 @@ vector<int> findFactor(int n){
 
 
 // FIND FACTOR OF NUMBER N 
-
 vector<pair<int,int>> findPrimeFactor(int n){
 	/*
 	n(12) :  2, 2, 3
@@ -181,7 +176,6 @@ vector<pair<int,int>> findPrimeFactor(int n){
 
 
 //	FIND LCM (LONGEST COMMON MULTIPLE)
-
 int findLcm(int a, int b){
 	/*
 	a(3) :	3	6	9	12	->15 
@@ -203,7 +197,6 @@ int findLcm(int a, int b){
 
 
 //	FIND GCD (GREATEST COMMON DIVISOR/FACTOR)
-
 int findGcd(int a, int b){
 	/*
 	a(3) : ->1
@@ -247,7 +240,6 @@ int findGcd(int a, int b){
 
 
 // FIND FAST MOD EXPONENTIATION
-
 ll findFastExp(int base, int exp, int modulo){
 	/*
 	m1. O(exp)   (note: it will raise tle for large value of exp)
@@ -285,7 +277,6 @@ ll findFastExp(int base, int exp, int modulo){
 //USING STANDARD LIBRARY  #include <algorithm.h>
 // gcd = __gcd(a,b);
 // lcm = a*b/__gcd(a,b);
-
 template<class T>
 T gcd(T x, T y) {
 	// EUCLINDEAN ALGORITHM
@@ -301,17 +292,15 @@ T lcm(T a, T b)
 
 
 // FIND FACTORIAL
-
-int findFactorial(int n){
+size_t findFactorial(size_t n){
 	if(n==1 || n==0){
 		return 1;
 	}
-	return n*findFactorial(n-1)%mod;
+	return n*findFactorial(n-1);
 } 
 
 
 // FIND SQUARE 
-
 vector<pair<int,int>> findSquare(int n){
 	vector<pair<int,int>> res;
 	for(int i=1; i<=n; i++){
@@ -325,6 +314,7 @@ vector<pair<int,int>> findSquare(int n){
 float findFibNTerm(float n){
 	/*
 	xn = (φ^n − (1−φ)^n) / √5
+	drive from f(n) = f(n-2)+f(n-1)
 	*/
 	float t = 1.618034;
 	return (pow(t,n)-pow((1-t),n))/sqrt(5);
@@ -349,4 +339,16 @@ int vectorToInt(vector<int> v){
 			decimal *= 10;
 	}
 	return total;
+}
+
+
+int findNpR(int n, int r){
+	// N p R => (n)! / (n-r)!
+	return findFactorial(n) / findFactorial(n-r);
+}
+
+
+int findNcR(int n, int r){
+	// N c R => (n)! / { (r)! * (n-r)! }
+	return findFactorial(n) / ( findFactorial(r)*findFactorial(n-r) );
 }
