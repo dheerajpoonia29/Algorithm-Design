@@ -3,7 +3,7 @@ int boolVectorToInt(vector<bool> b);
 
 // Total bits required to represent a num :
 
-int totalBitReq(int num){
+int findTotalBit(int num){
     //num req i bit if 2^(i-1) ≤ num ≤ 2^i – 1
     if(num==0)  return 0;
     int i = (int)log2(num)+1;
@@ -32,6 +32,19 @@ int setIthBit(int num,int i)
 int unsetIthBit(int num,int i)
 {
     return num &= (~(1 << i));
+}
+
+
+// UNSET ALL BIT EXCEPT MSB
+int unsetAllBitsExceptMSB(int x)
+{
+  x |= x >> 16;
+  x |= x >> 8;
+  x |= x >> 4;
+  x |= x >> 2;
+  x |= x >> 1;
+  x ^= x >> 1;
+  return x;
 }
 
 
@@ -94,7 +107,7 @@ int addUsingBit(int a, int b){
 
 // Count set bit
 
-int countSetBits(int num)
+int findSetBits(int num)
 {
     int cnt_set_bit = 0;
     while(num){
@@ -102,6 +115,58 @@ int countSetBits(int num)
         cnt_set_bit++;
     }
     return cnt_set_bit;
+		/* INBUILT FUNCTION 
+		_builtin_popcount(num) 
+		similarly _builtin_popcountl(x) and _builtin_popcountll(x)
+		*/
+}
+
+
+// FIND PARITY
+int findPairty(int num){
+	// counting no of 1's let say count1 
+	// parity 1 if count1 is odd 
+	// pairty 0 if count1 is even
+	int count1 = findSetBits(num);
+	return count1%2==0?1;
+
+	/* INBUILD FUNCTION 
+	_builtin_parity(num)
+	similarly _builtin_parityl(num) and _builtin_parityll(num)
+	*/
+}
+
+
+// COUNT LEADING ZERO
+int findLeadingZero(int num){
+	int count0leading = 0;
+	// lets say num is 64 bit then total length = 64
+	int tl = 64;
+	while(num){
+		tl-=1;
+		num>>=1;
+	}
+
+	count0leading = tl;
+	return count0leading;
+	/* INBUILT FUNCTION 
+	__builtin_clz(num)
+	*/
+}
+
+
+// COUNT TRAILING ZERO 
+int findTrailingZero(int num){
+	int count0Tralinig=0;
+	while(num&(1)==0){
+		count0Tralinig+=1;
+		num>>=1;
+	}
+	return count0Tralinig;
+
+	/* INBUILT FUNCTION 
+	__builtin_ctz(num)
+	*/
 }
 
 
@@ -153,6 +218,18 @@ bool isPowerOf2(int num)
     -------------*/
 }
 
+// Check if num is power of 3
+bool isPowerOf3(int num)
+{
+		/*
+		n = 3^i 
+		taking log 
+		i = log3(n)
+		converting it to base 10
+		i = log10(n) / log10(3)
+		not if i==0 it mean that n is power of 3
+		*/
+}
 
 // 1’s complement of num :
 
