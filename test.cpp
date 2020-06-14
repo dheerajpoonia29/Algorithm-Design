@@ -3,18 +3,17 @@
 //#include "mathematics/math_basic.h"
 //#include "base_conversion.h"
 
-int do_it(int,int);
+int do_it();
 
 int main()
 {
-	hello world
-
-	px(findNpR(3, 3));
-	px(findNcR(4, 3));
+	hello
 	
+
+
 	return 0;
 }
 
-int do_it(int a, int b){
+int do_it(){
 	
 }
