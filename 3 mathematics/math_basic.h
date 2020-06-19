@@ -34,6 +34,16 @@ int nextPrime(int n){
 }
 
 
+// FIND PRIEM BETWEEN A & B 
+vector<int> findPrimeInRange(int a, int b){
+	vector<int> res;
+	for(int i=a; i<=b; i++)
+		if(checkPrime(i))
+			res.pb(i);
+	return res;
+}
+
+
 // FIND ALL PRIME NUMBER UPTO N
 vector<int> findPrime(int n){
 	/*

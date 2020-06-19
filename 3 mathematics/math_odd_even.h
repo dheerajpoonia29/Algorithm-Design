@@ -86,6 +86,7 @@ void do_it(){
 		else
 		dp[i] = dp[i/2];
 	}
+	
 	long long int sum=0;
 	for(int i=1;i<=n;i++){
 		sum+=dp[i];
