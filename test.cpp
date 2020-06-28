@@ -4,15 +4,22 @@
 //#include "base_conversion.h"
 //#include "5 backtracking/backtracking_basic.h"
 //#include "6 greedy/greedy_basic.h"
-#include "7 dynamic programming/dp_basic.h"
+//#include "7 dynamic programming/dp_basic.h"
+#include "7 dynamic programming/lcs_variation.h"
 
 int main()
 {
 
-	vector<pair<int, int>> v = findPrimeFactor(10);
-	for(auto p: v){
-		cout<<p.first<<" "<<p.second<<"\n";
-	}
+	//LCS_SEQ lcs;
+	//px(lcs.usingDp("ABCDGHXYZ", "ABEDFHR"));
+	//px(lcs.printLcs("ABCDGH", "ABEDFHR"));
+	
+	LCS_STR lcs;
+	px(lcs.usingDp("X1234Y", "MNABCXY1234"));
+	px(lcs.printLcs("X1234Y", "MNABCXY1234"));
+	
+	//px(obj.lps_seq("BBABCBCAB"));
+	//px(obj.lps_str("forgeeksskeegfor"));
 
 	return 0;
 }

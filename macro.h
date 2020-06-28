@@ -1,5 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
+// udpate date: 6/28/2020
+// line: 47
 
 //------------------------- syntax shortening ----------------------
 #define ll                  long long int
@@ -42,7 +44,8 @@ using namespace std;
 #define pxyzw(x,y,z,w)     	cout << #x << "=" << x << ",\t" << #y << "=" << y << ",\t" << #z << "=" << z << ",\t" << #w << "=" << w << endl
 
 #define pa(arr,n)        		cout<< #arr << "=" ; for(int i=0;i<n;i++) cout<< arr[i] <<" "; cout<< endl
-#define pm(mat)      		cout<< #mat << "=" << endl;  for(int i=0; i<mat.size(); i++){ pv(mat[i]); } cout<<endl
+#define pvMat(vMat)      		cout<< #vMat << "= \n";  for(auto v: vMat){ pv(v); } cout<<endl
+#define paMat(aMat, n, m)		cout<< #aMat <<" = \n";  for(int i=0; i<n; i++){	for(int j=0; j<m; j++)	cout<<aMat[i][j]<<" "; cout<<endl; }
 
 #define pv(vec)          		cout<< #vec << "=" ; for(auto ele: vec)  cout<< ele <<" ";  cout<< endl
 #define pvp(vec)						cout<< #vec << "=\n" ; for(auto v: vec)	cout<< v.first <<":"<< v.second << endl;	 cout<< endl
@@ -67,7 +70,7 @@ using namespace std;
 #define ub(vec,key,l,r) 				(upper_bound(vec.begin()+l, vec.end()-r, key) - vec.begin());
 
 template <class t>
-void padt(stack<t> st){
+void pStk(stack<t> st){
 	cout<<"\nstack: ";
 	while(!st.empty()){
 		cout<<st.top()<<" ";
