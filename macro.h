@@ -1,7 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
-// udpate date: 6/28/2020
-// line: 47
+// udpate date: 7/1/2020
+// line: 84
 
 //------------------------- syntax shortening ----------------------
 #define ll                  long long int
@@ -69,6 +69,8 @@ using namespace std;
 #define lb(vec,key,l,r) 				(lower_bound(vec.begin()+l, vec.end()-r, key) - vec.begin());  
 #define ub(vec,key,l,r) 				(upper_bound(vec.begin()+l, vec.end()-r, key) - vec.begin());
 
+
+//--------------------- usefull function ------------------------
 template <class t>
 void pStk(stack<t> st){
 	cout<<"\nstack: ";
@@ -77,4 +79,12 @@ void pStk(stack<t> st){
 		st.pop();
 	}
 	cout<<"\n";
+}
+
+void inline cp(){
+#ifndef ONLINE_JUDGE
+	ios_base::sync_with_stdio(0); cin.tie(0); cout.tie(0);
+	freopen("input.txt", "r", stdin);
+	freopen("output.txt", "w", stdout);
+	#endif 
 }
