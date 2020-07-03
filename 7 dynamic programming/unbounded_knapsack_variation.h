@@ -58,7 +58,25 @@ class UNBOUNDED_KNAPSACK{
 		}
 };
 
-
+// base case
+			if (n == 0)
+					return 0;
+	
+			int maxValue = INT_MIN;
+	
+			// one by one partition the given rod of length n into two parts
+			// of length (1, n-1), (2, n-2), (3, n-3), .... (n-1 , 1), (n, 0)
+			// and take maximum
+			for (int i = 1; i <= n; i++)
+			{
+					// rod of length i has a cost price[i-1]
+					int cost = price[i - 1] + usingRecursive(length, price, n - i);
+	
+					if (cost > maxValue)
+							maxValue = cost;
+			}
+	
+			return maxValue;
 //	ROD CUTTING PROBLEM 
 class ROD_CUTTING_PROBLEM{
 	/*
