@@ -8,21 +8,19 @@
 //#include "7 dynamic programming/knapsack01_variation.h"
 //#include "7 dynamic programming/unbounded_knapsack_variation.h"
 //#include "7 dynamic programming/dp_leetcode_easy.h"
-#include "7 dynamic programming/matrix_chain_mul_variation.h"
-
+//#include "7 dynamic programming/matrix_chain_mul_variation.h"
+#include "macro.h"
+#include "3 mathematics\number theory\basic.h"
 
 int main()
 {
+	cp();
 
-	memset(memo, -1, sizeof(memo));
-	//int arr[] = {10, 30, 5, 60};
-	//int n = ;
-
-	vector<pair<int, int>> mat_size{{10, 30}, {30, 5}, {5, 60}};
-
-	MCM obj;
-	px(obj.convert(mat_size));
+	px(prime(10));
+	pv(factors(7));
+	
+	p.resize(10, 0);
+	pv(sieve(10));
 
 	return 0;
 }
-

@@ -1,32 +1,37 @@
 
 
-int linearSearch(int arr[], int n, int sk){
-	int ki=-1;
-	for(int i=0; i<n; i++){
-			if(arr[i]==sk){
-				ki = i;
-				break;
-			}
-	}
-	return ki;
+int linearSearch(int arr[], int n, int sk)
+{
+    int ki = -1;
+    for(int i = 0; i < n; i++)
+    {
+        if(arr[i] == sk)
+        {
+            ki = i;
+            break;
+        }
+    }
+    return ki;
 }
 
 
 
-int binarySearch(vector<int> arr, x){
-	int a = 0, b = n - 1;
-	while (a <= b) {
-		int k = (a + b) / 2;
-		if (arr[k] == x) {
-			// x found at index k
-			return k;
-		}
-		if (arr[k] > x)
-			b = k - 1;
-		else a = k + 1;
-	}
+int binarySearch(vector<int> arr, x)
+{
+    int a = 0, b = n - 1;
+    while (a <= b)
+    {
+        int k = (a + b) / 2;
+        if (arr[k] == x)
+        {
+            // x found at index k
+            return k;
+        }
+        if (arr[k] > x)
+            b = k - 1;
+        else a = k + 1;
+    }
 }
-
 /*
 int recursiveBinarySearch(vector<int> arr, int sk)
 {
@@ -109,47 +114,54 @@ void lower&upperBound(int arr[], int target){
 	while (i < j)
 	{
 			int mid = (i + j) /2 + 1;   // Make mid biased to the right
-			if (A[mid] > target) j = mid - 1;  
+			if (A[mid] > target) j = mid - 1;
 			else i = mid;
 	}
 	end = j;    <- UB
 }
 */
 
-int findSqrt(int n){
-	int low = 1, high = n, ans;
-	long long mid;
-	while(low<=high){
-		mid = low+(high-low)/2;
-		if(mid*mid==n)
-			return mid;
-		else if(mid*mid<n){
-			ans = mid;
-			// till now ans is sqrt but it may possbile that we find higher closet sqrt of number n
-			low = mid+1;
-		}
-		else{
-			high = mid-1;
-		}
-	}
-	return ans;
+int findSqrt(int n)
+{
+    int low = 1, high = n, ans;
+    long long mid;
+    while(low <= high)
+    {
+        mid = low + (high - low) / 2;
+        if(mid * mid == n)
+            return mid;
+        else if(mid * mid < n)
+        {
+            ans = mid;
+            // till now ans is sqrt but it may possbile that we find higher closet sqrt of number n
+            low = mid + 1;
+        }
+        else
+        {
+            high = mid - 1;
+        }
+    }
+    return ans;
 }
 
-int countDuplicateInSortedArray(vector<int> A, int B){
-	int start_idx = lb(A,B,0,0);
-	if(A[start_idx]!=B)
-			start_idx = -1;
+int countDuplicateInSortedArray(vector<int> A, int B)
+{
+    int start_idx = lb(A, B, 0, 0);
+    if(A[start_idx] != B)
+        start_idx = -1;
 
-	int end_idx = ub(A,B,0,0)-1;
-	if(A[end_idx]!=B)
-			end_idx = -1;
-			
-	if(start_idx!=-1 && end_idx!=-1){
-		return end_idx-start_idx;
-	}
-	return -1;
+    int end_idx = ub(A, B, 0, 0) - 1;
+    if(A[end_idx] != B)
+        end_idx = -1;
+
+    if(start_idx != -1 && end_idx != -1)
+    {
+        return end_idx - start_idx;
+    }
+    return -1;
 }
 
-int findPower(int base, int exponent){
+int findPower(int base, int exponent)
+{
 
 }
