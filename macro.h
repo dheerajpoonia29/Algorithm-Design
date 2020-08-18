@@ -62,12 +62,10 @@ using namespace std;
 #define prec(x,y)           fixed<<setprecision(y)<<x;
 //prec(ans,6)
 
-
-
 //----------------------- boolean macro -------------------------
-#define                     isKeyExist(hashtbl, key) (hashtbl.find(key)!=hashtbl.end())
-#define lb(vec,key,l,r) 				(lower_bound(vec.begin()+l, vec.end()-r, key) - vec.begin());  
-#define ub(vec,key,l,r) 				(upper_bound(vec.begin()+l, vec.end()-r, key) - vec.begin());
+#define isKeyExist(hashtbl, key) (hashtbl.find(key)!=hashtbl.end())
+// #define lb(vec,key,l,r) 				(lower_bound(vec.begin()+l, vec.end()-r, key) - vec.begin());  
+// #define ub(vec,key,l,r) 				(upper_bound(vec.begin()+l, vec.end()-r, key) - vec.begin());
 
 
 //--------------------- usefull function ------------------------
@@ -81,10 +79,3 @@ void pStk(stack<t> st){
 	cout<<"\n";
 }
 
-void inline cp(){
-#ifndef ONLINE_JUDGE
-	ios_base::sync_with_stdio(0); cin.tie(0); cout.tie(0);
-	freopen("input.txt", "r", stdin);
-	freopen("output.txt", "w", stdout);
-	#endif 
-}
